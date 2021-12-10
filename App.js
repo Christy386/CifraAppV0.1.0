@@ -1,21 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+//importar bibliotecas gerais
+import React, { useState } from "react";
+//import { View, Text, Button, TextInput  } from 'react-native';
+import { NavigationContainer} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-export default function App() {
+import socket from './src/Api/Socket-io'
+
+import {Entypo} from '@expo/vector-icons'
+
+import HomeScreen from './src/pages/Home/index-home'
+import Test from './src/pages/Test/index-test'
+import Search from './src/pages/Search/index-search'
+import Config from './src/pages/Config/index-config';
+
+import globalStyles from './src/styles/global'
+
+const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+var MsgVar;
+
+function App() {
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      
+      <Tab.Navigator 
+        
+        screenOptions={globalStyles.tabBar}>
+
+        <Tab.Screen name="Home" component={HomeScreen} options={globalStyles.home} />
+        <Tab.Screen name="Test" component={Test} options={globalStyles.test} />
+        <Tab.Screen name="Search" component={Search} options={globalStyles.search} />
+        <Tab.Screen name="Config" component={Config} options={globalStyles.config} />
+      
+      </Tab.Navigator>
+
+      
+      
+
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
