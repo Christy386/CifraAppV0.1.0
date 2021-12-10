@@ -1,3 +1,6 @@
+/*
+------> link do video: https://drive.google.com/file/d/1_GUcK-0MULQ9vGXl4tebp6thgFUM0ggi/view?usp=sharing
+*/
 //importar bibliotecas gerais
 import React, { useState } from "react";
 //import { View, Text, Button, TextInput  } from 'react-native';
